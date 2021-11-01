@@ -260,12 +260,23 @@
                                                     </div>
                                                     <div class="nk-cov-wg4-aside-body" data-simplebar>
                                                         <ul class="nk-cov-wg4-list">
+                                                        	
                                                             <li>
                                                                 <a class="nk-cov-wg4-list-item" href="#">
                                                                     <span class="title">Worldwide</span>
-                                                                    <span class="count">737,670</span>
+                                                                    <span class="count" th:text = ${totalCases} />
                                                                 </a>
                                                             </li>
+                                                            
+                                                            <div th:each="covid : ${allCovidInfo}">
+                                                            <li>
+                                                                <a class="nk-cov-wg4-list-item" href="#">
+                                                                    <span class="title" th:text = ${covid.countryText} />
+                                                                    <span class="count" th:text = ${covid.totalCasesText} />
+                                                                </a>
+                                                            </li>
+                                                            </div>
+                                                            
                                                             <li>
                                                                 <a class="nk-cov-wg4-list-item active" href="#">
                                                                     <span class="title">USA</span>
@@ -556,15 +567,40 @@
                                             <div class="nk-tb-list is-medium nk-cov-wg5-table">
                                                 <div class="nk-tb-item nk-tb-head">
                                                     <div class="nk-tb-col">Country</div>
-                                                    <div class="nk-tb-col text-right">Confirmed</div>
-                                                    <div class="nk-tb-col text-right">Recovered</div>
-                                                    <div class="nk-tb-col text-right">Deaths</div>
+                                                    <div class="nk-tb-col text-right" >Total Cases</div>
+                                                    <div class="nk-tb-col text-right" >Deaths</div>
+                                                    <div class="nk-tb-col text-right" >Recovered</div>
                                                 </div>
+                                                
+                                               
+                                                
+                                                <div th:each="case: ${topCases}">
+                                                	<div class="nk-tb-item">
+                                                    <div class="nk-tb-col">
+                                                        <div class="tb-country">
+                                                            <img class="flag" src="images/flags/us.png" alt="">
+                                                            <div class="name" th:text = "${case.countryText}"/>
+                                                        </div>
+                                                    </div>
+                                                    <div class="nk-tb-col text-right">
+                                                        <div class="tb-lead tb-amount"><span th:text = ${case.totalCasesText}/></div>
+                                                    </div>
+                                                    <div class="nk-tb-col text-right">
+                                                        <div class="tb-lead tb-amount"><span th:text = ${case.totalDeathsText}/></div>
+                                                    </div>
+                                                    <div class="nk-tb-col text-right">
+                                                        <div class="tb-lead tb-amount"><span th:text = ${case.totalRecoveredText}/></div>
+                                                    </div>
+                                                </div>
+                         					  </div>
+                                               <div/>
+                                                
+                                                <br><br/>
                                                 <div class="nk-tb-item">
                                                     <div class="nk-tb-col">
                                                         <div class="tb-country">
                                                             <img class="flag" src="images/flags/us.png" alt="">
-                                                            <div class="name">USA</div>
+                                                             <div class="name">USA</div>
                                                         </div>
                                                     </div>
                                                     <div class="nk-tb-col text-right">
