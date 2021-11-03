@@ -13,5 +13,6 @@ public interface AllCovidRepository {
 	@GET("v1")
 	Call<List<AllCovidInfo>>  getAll();
 	
+	@GET("v1/{country}")
 	Call<AllCovidInfo> getByCountry(@Path("country") String country);
 }

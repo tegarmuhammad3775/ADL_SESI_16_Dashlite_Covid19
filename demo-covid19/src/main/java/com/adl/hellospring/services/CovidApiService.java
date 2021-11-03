@@ -16,10 +16,11 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class CovidApiService {
 	
 	private AllCovidRepository service;
+	public String BASE_URL="https://covid-19.dataflowkit.com/";
 	
 	public CovidApiService() {
 		Retrofit retrofit = new Retrofit.Builder()
-				.baseUrl("https://covid-19.dataflowkit.com/")
+				.baseUrl(BASE_URL)
 				.addConverterFactory(GsonConverterFactory.create())
 				.build();
 		
@@ -39,6 +40,18 @@ public class CovidApiService {
 		
 		return response.body();
 		
+	}
+	
+	public AllCovidInfo getCovidInfo(String country){
+		Call<AllCovidInfo> call = service.getByCountry(country);
+	    Response<AllCovidInfo> response = null;
+		try {
+			response = call.execute();
+		} catch (Exception e) {
+			e.printStackTrace();
+			// TODO: handle exception
+		}
+		return response.body();
 	}
 	
 }

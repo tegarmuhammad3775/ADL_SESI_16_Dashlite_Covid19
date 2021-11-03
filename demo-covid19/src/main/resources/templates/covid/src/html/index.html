@@ -195,21 +195,27 @@
                                                 <div class="card card-bordered card-full">
                                                     <div class="card-inner">
                                                         <div class="nk-cov-wg2">
+                                                             <div class="search-content">
+                                                                <form th:action="@{/}" method="get">
+                                                                	<input th:name="country" type="text" class="form-control border-transparent form-focus-none" placeholder="Search by Country">
+                                                                	<button class="search-submit btn btn-icon"><em class="icon ni ni-search"></em></button>
+                                                            	<form />
+                                                            </div>
                                                             <div class="card-title">
-                                                                <h5 class="title">Coronavirus Cases - <small>Bangladesh</small></h5>
+                                                                <h5 class="title">Coronavirus Cases - <small th:text="${covidSearch.countryText}"/></h5>
                                                             </div>
                                                             <div class="nk-cov-group">
                                                                 <div class="nk-cov-data">
-                                                                    <h6 class="overline-title">Confirmed</h6>
-                                                                    <div class="amount amount-sm">48</div>
+                                                                    <h6 class="overline-title">Total Cases</h6>
+                                                                    <div th:text="${covidSearch.totalCasesText}" class="amount amount-sm" />
                                                                 </div>
                                                                 <div class="nk-cov-data">
-                                                                    <h6 class="overline-title">Recovered</h6>
-                                                                    <div class="amount amount-sm text-success">15</div>
+                                                                    <h6 class="overline-title">Total Deaths</h6>
+                                                                    <div th:text="${covidSearch.totalDeathsText}" class="amount amount-sm text-success"/>
                                                                 </div>
                                                                 <div class="nk-cov-data">
-                                                                    <h6 class="overline-title">Deaths</h6>
-                                                                    <div class="amount amount-sm text-danger">5</div>
+                                                                    <h6 class="overline-title">Total Recovered</h6>
+                                                                    <div th:text="${covidSearch.totalRecoveredText}" class="amount amount-sm text-danger"/>
                                                                 </div>
                                                             </div>
                                                             <div class="nk-cov-wg-note">The ratio of <a href="#">Recovery (31.3%)</a> &amp; <a href="#">Deaths (10.5%)</a>.</div>
@@ -822,13 +828,15 @@
                             </a>
                         </div>
                     </div>
-                    <form action="#">
-                        <textarea class="form-control no-resize" placeholder="Enter feedback here. To help protect your privacy, don’t include personal info."></textarea>
+                     <form method="post" th:action="@{/}" th:object="${mockModel}">
+                    	<input th:field="*{title}" type="text" class="form-control border-transparent form-focus-none" placeholder="Input title">
+                    	<input th:field="*{body}" type="text" class="form-control border-transparent form-focus-none" placeholder="Input body">
+                    	<input th:field="*{userId}" type="text" class="form-control border-transparent form-focus-none" placeholder="Input userId">
                         <div class="align-center justify-between mt-3">
                             <a href="#" class="link link-sm">Privacy Policy</a>
                             <ul class="btn-toolbar g-1">
                                 <li><a href="#" class="btn btn-light">Go Back</a></li>
-                                <li><a href="#" class="btn btn-primary">Send</a></li>
+                                <li><button class="btn btn-primary">Send</button></li>
                             </ul>
                         </div>
                     </form>

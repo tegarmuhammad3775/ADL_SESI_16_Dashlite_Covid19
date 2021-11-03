@@ -149,8 +149,26 @@
                                             <div class="card-inner card-inner-lg">
                                                 <h4>Common Question & Answer</h4>
                                                 <p>WHO is continuously monitoring and responding to this outbreak. This Q&A will be updated as more is known about COVID-19, how it spreads and how it is affecting people worldwide. For more information, check back regularly on WHO’s <a href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019" target="_blank">coronavirus pages</a>.</p>
+                                                <a href="/faqs/input" class="btn btn-primary">Input Coronavirus Disease Basics</a>
                                                 <h5 class="title text-dark mt-4 pt-sm-2 mb-3">Coronavirus Disease Basics</h5>
                                                 <div class="accordion accordion-s3">
+                                                	
+                                                	<div class="accordion-item" th:each="faqs : ${listFaqs}">
+                                                        <a href="#" class="accordion-head collapsed" data-toggle="collapse" data-target="#covid-basics-01">
+                                                            <h6 class="title" th:text="${faqs.title}"/>
+                                                            <span class="accordion-icon"></span>
+                                                        </a>
+                                                        <div id="covid-basics-01" class="accordion-body collapse">
+                                                            <div class="image image-lg">
+                                                                <img th:src="@{'/prevention-image/'+${faqs.image}}" alt="" width="100" height="100"/>
+                                                            </div> 
+                                                            <div class="accordion-inner">
+                                                                 <p th:text="${faqs.description}"/>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                	
+                                                	<br></br>
                                                     <div class="accordion-item">
                                                         <a href="#" class="accordion-head collapsed" data-toggle="collapse" data-target="#covid-basics-01">
                                                             <h6 class="title">What is a novel coronavirus?</h6>
