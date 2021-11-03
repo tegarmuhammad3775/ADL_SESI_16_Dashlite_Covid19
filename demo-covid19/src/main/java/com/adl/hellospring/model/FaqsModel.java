@@ -24,7 +24,7 @@ public class FaqsModel {
 	private String title;
 	private String description;
 	private String image;
-
+    
 	
 	
 }
